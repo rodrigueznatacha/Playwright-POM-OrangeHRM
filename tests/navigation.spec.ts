@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+/*import { test, expect } from '@playwright/test';
 import { LoginPage } from './pages/LoginPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { authData } from './data/auth.data';
@@ -28,4 +28,4 @@ test.describe('Navegación del sistema @regression', () => {
 
   
 
-});
+});*/

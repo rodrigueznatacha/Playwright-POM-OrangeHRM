@@ -19,6 +19,13 @@ export class LoginPage extends SuperPage {
 		await this.submitButton.click();
 		await this.page.waitForLoadState('domcontentloaded');
 	}
+
+	async loginSuccess(){
+		const { username, password } = this.getCredentials();
+		await this.login(username, password);
+		await this.expect(this.page).toHaveURL('**/dashboard/index');
+	}
+
 }
 /* import {  } from "module";mport { type Locator, type Page } from '@playwright/test';
 

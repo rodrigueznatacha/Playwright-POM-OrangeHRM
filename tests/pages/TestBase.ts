@@ -2,11 +2,11 @@ import { test as driver } from '@playwright/test';
 import { LoginPage } from '@pages/LoginPage';
 //import { DashboardPage } from './DashboardPage';
 
-driver.extend<{ 
-	login: LoginPage;
+const test = driver.extend<{ 
+	loginPage: LoginPage;
 	//dashboard: DashboardPage;
 }>({
-	login: async ({ page }, use) => {
+	loginPage: async ({ page }, use) => {
 		await use (new LoginPage(page));
 	},
 
@@ -14,3 +14,5 @@ driver.extend<{
 	//	await use ( new DashboardPage(page));
 	//}
 });
+
+export { test };
