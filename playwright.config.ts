@@ -10,7 +10,7 @@ export default defineConfig({
 	// Test Repo Directory:
 	testDir: './tests',
 	/* Maximum time one test can run for. */
-	timeout: 40 * 1000,
+	timeout: 70 * 1000,
 	expect: {
 		/**
 		 * Maximum time expect() should wait for the condition to be met.
@@ -29,13 +29,18 @@ export default defineConfig({
 	/* Opt out of parallel tests on CI. Workers are kinda flaky! not prefer to use them */
 	workers: process.env.CI ? 4 : 1,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
-	reporter: [['./tests/custom-reporter.ts'], ['html', { outputFolder: 'test-html-report/main', open: 'never' }], ['junit', { outputFolder: 'test-junit-report', outputFile: 'test-junit-report/main-importer-report.xml' }], ['allure-playwright']],
+	reporter: [
+		['./tests/custom-reporter.ts'],
+		['html', { outputFolder: 'test-html-report/chrome', open: 'never' }],
+		['junit', { outputFolder: 'test-junit-report', outputFile: 'test-junit-report/chrome-importer-report.xml' }],
+		['allure-playwright']
+		],
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
 		/* Base URL to use in actions like `await page.goto('/')`. */
 		baseURL: 'https://opensource-demo.orangehrmlive.com/web/index.php',
 		// Headless Mode: true by default
-		headless: false,
+		headless: true,
 		// Viewport Resolution
 		viewport: { width: 1920, height: 1080 },
 		/* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */

@@ -21,9 +21,10 @@ export class LoginPage extends SuperPage {
 	}
 
 	async loginSuccess(){
+		await this.goHome();
 		const { username, password } = this.getCredentials();
 		await this.login(username, password);
-		await this.expect(this.page).toHaveURL('**/dashboard/index');
+		await this.expect(this.page).toHaveURL('index.php/dashboard/index');
 	}
 
 }
