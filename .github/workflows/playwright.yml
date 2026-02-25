@@ -13,16 +13,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: 20
+
+    # 1. Instalar pnpm
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9 # O la versión que uses localmente
+
+    # 2. Instalar dependencias con pnpm
     - name: Install dependencies
-      run: npm ci
+      run: pnpm install
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps chromium
+
     - name: Run Playwright tests
       env:
         ORANGE_USERNAME: ${{ secrets.ORANGE_USERNAME }}
         ORANGE_PASSWORD: ${{ secrets.ORANGE_PASSWORD }}
-      run: npx playwright test
+      run: pnpm exec playwright test
