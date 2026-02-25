@@ -20,7 +20,7 @@ on:
         - PROD #? donde los usuarios finales usan la App.
 
 jobs:
-  "RegressionTest:":
+  RegressionTest:
     runs-on: ubuntu-latest
     environment:
       name: ${{ github.event.inputs.environment }}
