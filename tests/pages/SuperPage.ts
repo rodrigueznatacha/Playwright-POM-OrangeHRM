@@ -27,7 +27,6 @@ export class SuperPage {
 		this.popup = (text?: string ) => this.page.getByRole('dialog', { name: text });
 		this.optionDropdown = (contextElement: Locator) => contextElement.locator('.oxd-select-text-input');
 		this.autoInputDropdown = (contextElement: Locator) => contextElement.locator('input');
-		this.input = (contextElement: Locator) => contextElement.locator('.oxd-input');	
 		this.dropdown = (contextElement: Locator) => contextElement.getByRole('listbox');
 		this.dropdownOptions = (contextElement: Locator) => this.dropdown(contextElement).getByRole('option').filter({ hasNotText: '-- Select --' });
 		this.input = (contextElement: Locator) => contextElement.locator('.oxd-input');
