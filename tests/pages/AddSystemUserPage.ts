@@ -16,7 +16,7 @@ export class AddSystemUserPage extends SuperPage {
 	constructor(page: Page) {
 		super(page);	
 		this.adminTab = this.page.locator('.oxd-main-menu-item').getByText('Admin', { exact: true });
-		this.addButton =this. page.locator('button', { hasText: 'Add' });
+		this.addButton = this.page.locator('button', { hasText: 'Add' });
 		
 		 this.userRoleOptionDropdown= this.page.locator('.oxd-grid-item').filter({ hasText: 'User Role' });
 		 this.employeeNameInputDropdown= this.page.locator('.oxd-grid-item').filter({ hasText: 'Employee Name' });
@@ -60,3 +60,22 @@ export class AddSystemUserPage extends SuperPage {
 		await this.expect(this.page).toHaveURL('index.php/admin/saveSystemUser');
 	}
 }
+
+//import { SuperPage } from './SuperPage';
+//import { Page, Locator } from '@playwright/test';
+
+//export class AddSystemUserPage extends SuperPage {
+    
+    // Todo encapsulado, limpio y en una sola línea
+//    private readonly adminTab = this.page.locator('.oxd-main-menu-item').getByText('Admin', { exact: true });
+//    private readonly addButton = this.page.locator('button', { hasText: 'Add' });
+//    private readonly userRoleOptionDropdown = this.page.locator('.oxd-grid-item').filter({ hasText: 'User Role' });
+//    private readonly employeeNameInputDropdown = this.page.locator('.oxd-grid-item').filter({ hasText: 'Employee Name' });
+//    private readonly statusOptionDropdown = this.page.locator('.oxd-grid-item').filter({ hasText: 'Status' });
+//    private readonly userNameInput = this.page.locator('.oxd-grid-item').filter({ hasText: 'Username' });
+//    private readonly passwordInput = this.page.locator('.oxd-grid-item').filter({ has: this.page.getByText('Password', { exact: true }) });
+//    private readonly confirmPasswordInput = this.page.locator('.oxd-grid-item').filter({ hasText: 'Confirm Password' });
+//    private readonly saveButton = this.page.locator('button[type=submit]', { hasText: 'Save' });
+
+    // ¡Adiós al constructor verboso! Todo el trabajo pesado lo hace SuperPage.
+//}
