@@ -1,7 +1,5 @@
 # 🎭 Playwright & TypeScript: Enterprise E2E Framework
 
-[![Playwright Tests](https://github.com/rodrigueznatacha/Playwright-POM-OrangeHRM/actions/workflows/playwright.yml/badge.svg)](https://github.com/rodrigueznatacha/Playwright-POM-OrangeHRM/actions/workflows/playwright.yml)
-
 ### Automation Showcase - OrangeHRM Open Source Demo
 
 [![Playwright Tests](https://github.com/rodrigueznatacha/Playwright-POM-OrangeHRM/actions/workflows/playwright.yml/badge.svg)](https://github.com/rodrigueznatacha/Playwright-POM-OrangeHRM/actions/workflows/playwright.yml)
@@ -20,7 +18,7 @@ Este proyecto es un framework de automatización **End-to-End (E2E)** de nivel p
 | **Playwright** | Motor de automatización de última generación. |
 | **TypeScript** | Tipado fuerte para un código mantenible y libre de errores. |
 | **pnpm** | Gestión de dependencias eficiente y rápida. |
-| **GitHub Actions** | Pipeline de Integración Continua (CI). |
+| **GitHub Actions** | Pipeline de Integración Continua (CI/CD). |
 | **Faker.js** | Generación de datos de prueba dinámicos y realistas. |
 
 ---
@@ -41,32 +39,48 @@ Durante el desarrollo, se aplicaron estrategias críticas para garantizar la est
 
 ### 1. Manejo de Flakiness (Tests Intermitentes)
 
-* **Sincronización Avanzada**: Se reemplazaron esperas genéricas por validaciones de estado como `toBeVisible()` en componentes clave (tablas, formularios) antes de ejecutar aserciones de URL.
-* **Aserciones Flexibles**: Uso de **Regex** en `toHaveURL` para permitir latencias en redirecciones de servidor sin romper el flujo.
+* **Sincronización Avanzada**: Se reemplazaron esperas genéricas por validaciones de estado como `toBeVisible()` en componentes clave (tablas, formularios) antes de ejecutar aserciones de URL o clics.
+* **Aserciones Flexibles**: Uso de Expresiones Regulares (`Regex`) en `toHaveURL` para permitir latencias en redirecciones de servidor sin romper el flujo.
 
 ### 2. Optimización de Infraestructura
 
-* **CI/CD con pnpm**: Configuración del workflow de GitHub para usar `pnpm`, reduciendo el tiempo de instalación de dependencias.
+* **CI/CD con pnpm**: Configuración del workflow de GitHub para usar `pnpm`, reduciendo drásticamente el tiempo de instalación de dependencias en la nube.
 * **Headless Testing**: Ejecución optimizada en segundo plano para máxima velocidad en el pipeline.
 
-![GitHub Actions Success](./docs/Run-OK.JPG)
 ---
 
 ## 📊 Ejecución y Reportes
 
 ### Local
 
-1. **Instalar dependencias**: `pnpm install`.
-2. **Ejecutar tests**: `pnpm exec playwright test`.
-3. **Ver reporte**: `npx playwright show-report`.
+1. Instalar dependencias:
+
+    ```bash
+    pnpm install
+    ```
+
+2. Ejecutar tests:
+
+    ```bash
+    pnpm exec playwright test
+    ```
+
+3. Ver reporte HTML interactivo:
+
+    ```bash
+    npx playwright show-report
+    ```
 
 ### CI/CD (GitHub Actions)
 
 El framework está configurado para:
 
-* Ejecutarse automáticamente en cada `push` a `main`.
-* Capturar **Traces** y **Screenshots** automáticamente solo en caso de fallo para facilitar el debugging.
+* Ejecutarse automáticamente en cada `push` o Pull Request hacia `main`.
+* Capturar **Traces** y **Screenshots** automáticamente *solo en caso de fallo*, para facilitar el debugging sin saturar el almacenamiento.
 
+Ejecución exitosa del Pipeline en GitHub Actions:
+
+![Pipeline Success](docs\pipeline-success.JPG)
 ---
 
 ## 📂 Estructura del Proyecto
